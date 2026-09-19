@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Arvan Oil | بەنزینخانەی ئارڤان</title>
+
+  <meta name="description"
+    content="Arvan Oil - بەنزینخانەی ئارڤان، سووتەمەنیی کوالێتی و خزمەتگوزاریی خێرا.">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f7f8fc;
+      color: #182238;
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 9999;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #e7eaf0;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #125bd7;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .logo-box {
+      width: 45px;
+      height: 45px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 23px;
+      font-weight: bold;
+      background: linear-gradient(135deg,#125bd7,#86459f);
+      box-shadow: 0 8px 20px rgba(18,91,215,.2);
+    }
+
+    nav {
+      display: flex;
+      gap: 27px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: bold;
+      color: #313b50;
+      transition: .25s;
+    }
+
+    nav a:hover {
+      color: #125bd7;
+    }
+
+    .menu {
+      display: none;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #125bd7;
+      color: white;
+      font-size: 22px;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 145px 22px 80px;
+      background:
+        radial-gradient(circle at 10% 20%,rgba(18,91,215,.13),transparent 30%),
+        radial-gradient(circle at 90% 80%,rgba(134,69,159,.13),transparent 30%),
+        linear-gradient(135deg,#f8fbff,#faf7fc);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 70vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .welcome {
+      display: inline-block;
+      background: white;
+      color: #125bd7;
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(30,40,70,.08);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px,8vw,90px);
+      line-height: .95;
+      color: #125bd7;
+      font-weight: 950;
+      letter-spacing: -3px;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      font-size: clamp(24px,4vw,39px);
+      margin-bottom: 13px;
+      color: #172238;
+    }
+
+    .hero p {
+      color: #68748a;
+      font-size: 17px;
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      padding: 13px 22px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: .25s;
+    }
+
+    .primary {
+      color: white;
+      background: #125bd7;
+      box-shadow: 0 10px 25px rgba(18,91,215,.25);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .secondary {
+      background: white;
+      border: 1px solid #dfe4ed;
+    }
+
+    .secondary:hover {
+      border-color: #125bd7;
+      color: #125bd7;
+    }
+
+    /* HERO CARD */
+
+    .hero-card {
+      height: 450px;
+      border-radius: 35px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(140deg,#125bd7,#86459f);
+      box-shadow: 0 35px 80px rgba(25,40,80,.22);
+    }
+
+    .circle-one,
+    .circle-two {
+      position: absolute;
+      border: 30px solid rgba(255,255,255,.09);
+      border-radius: 50%;
+    }
+
+    .circle-one {
+      width: 330px;
+      height: 330px;
+      top: -130px;
+      left: -90px;
+    }
+
+    .circle-two {
+      width: 300px;
+      height: 300px;
+      bottom: -130px;
+      right: -80px;
+    }
+
+    .hero-logo {
+      position: absolute;
+      top: 48px;
+      right: 20px;
+      left: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-logo h3 {
+      font-size: 52px;
+      font-weight: 950;
+      letter-spacing: -2px;
+    }
+
+    .hero-logo p {
+      color: white;
+      opacity: .9;
+      font-size: 19px;
+      margin: 0;
+    }
+
+    .pumps {
+      position: absolute;
+      bottom: 38px;
+      left: 35px;
+      right: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      gap: 17px;
+    }
+
+    .pump {
+      width: 105px;
+      height: 185px;
+      border-radius: 12px 12px 7px 7px;
+      background: white;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0,0,0,.2);
+    }
+
+    .pump-screen {
+      position: absolute;
+      top: 18px;
+      left: 13px;
+      right: 13px;
+      height: 52px;
+      background: #192235;
+      border-radius: 7px;
+    }
+
+    .pump-circle {
+      position: absolute;
+      bottom: 15px;
+      left: 30px;
+      width: 44px;
+      height: 44px;
+      border: 7px solid #125bd7;
+      border-radius: 50%;
+    }
+
+    /* ================= GENERAL ================= */
+
+    section {
+      padding: 90px 22px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-head small {
+      color: #86459f;
+      font-weight: 900;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px,4vw,45px);
+      margin-top: 5px;
+    }
+
+    .section-head p {
+      color: #707b8e;
+      max-width: 600px;
+      margin: 8px auto;
+    }
+
+    /* ================= PRICES ================= */
+
+    .prices {
+      background: white;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .price-card {
+      padding: 28px 20px;
+      text-align: center;
+      border-radius: 21px;
+      background: #f8faff;
+      border: 1px solid #e6ebf4;
+      transition: .3s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 35px rgba(30,40,70,.09);
+    }
+
+    .fuel-icon {
+      width: 57px;
+      height: 57px;
+      border-radius: 17px;
+      margin: auto auto 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eaf1ff;
+      font-size: 25px;
+    }
+
+    .price-card h3 {
+      font-size: 18px;
+    }
+
+    .price {
+      color: #125bd7;
+      font-size: 32px;
+      font-weight: 950;
+    }
+
+    .currency {
+      color: #778197;
+      font-size: 13px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+      background: #f7f8fc;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: stretch;
+    }
+
+    .about-box {
+      background: white;
+      padding: 38px;
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(30,40,70,.06);
+    }
+
+    .about-box h3 {
+      font-size: 30px;
+      margin-bottom: 13px;
+    }
+
+    .about-box p {
+      color: #69758a;
+      margin-bottom: 22px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .feature {
+      padding: 13px;
+      border-radius: 14px;
+      background: #f7f9fd;
+      font-weight: bold;
+    }
+
+    .feature span {
+      color: #125bd7;
+      margin-left: 6px;
+    }
+
+    .about-visual {
+      min-height: 350px;
+      border-radius: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      background: linear-gradient(140deg,#125bd7,#86459f);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-visual h3 {
+      font-size: 62px;
+      font-weight: 950;
+    }
+
+    .about-visual p {
+      color: white;
+      opacity: .9;
+      margin: 0;
+    }
+
+    /* ================= SERVICES ================= */
+
+    .services {
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .service {
+      border: 1px solid #e6ebf3;
+      border-radius: 21px;
+      padding: 28px 22px;
+      transition: .3s;
+    }
+
+    .service:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 35px rgba(30,40,70,.08);
+    }
+
+    .service-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .service h3 {
+      margin-bottom: 6px;
+    }
+
+    .service p {
+      color: #737e91;
+      font-size: 14px;
+    }
+
+    /* ================= LOCATION ================= */
+
+    .location {
+      background: #f7f8fc;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .location-info {
+      background: white;
+      border-radius: 27px;
+      padding: 35px;
+    }
+
+    .location-info h3 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .location-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #edf0f5;
+    }
+
+    .location-row:last-child {
+      border: 0;
+    }
+
+    .map {
+      min-height: 330px;
+      border-radius: 27px;
+      background: linear-gradient(135deg,#dce9fb,#eee4f2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .map-icon {
+      font-size: 60px;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+      background: white;
+    }
+
+    .contact-box {
+      text-align: center;
+      color: white;
+      border-radius: 30px;
+      padding: 55px 25px;
+      background: linear-gradient(135deg,#125bd7,#86459f);
+      box-shadow: 0 25px 60px rgba(18,91,215,.2);
+    }
+
+    .contact-box h2 {
+      font-size: 38px;
+      margin-bottom: 7px;
+    }
+
+    .contact-box p {
+      opacity: .9;
+      margin-bottom: 25px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-buttons a {
+      background: white;
+      color: #125bd7;
+      padding: 12px 21px;
+      border-radius: 13px;
+      font-weight: bold;
+      transition: .25s;
+    }
+
+    .contact-buttons a:hover {
+      transform: translateY(-3px);
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #121827;
+      color: white;
+      padding: 35px 22px;
+    }
+
+    .footer {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer strong {
+      font-size: 21px;
+    }
+
+    .footer p {
+      color: #9aa4b7;
+      font-size: 13px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media(max-width:900px) {
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 73px;
+        right: 18px;
+        left: 18px;
+        background: white;
+        padding: 18px;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(20,30,60,.12);
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        padding: 8px;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .price-grid,
+      .service-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:560px) {
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .logo-box {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero {
+        padding-left: 17px;
+        padding-right: 17px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .hero h2 {
+        font-size: 25px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .hero-card {
+        height: 350px;
+        border-radius: 25px;
+      }
+
+      .hero-logo h3 {
+        font-size: 39px;
+      }
+
+      .hero-logo p {
+        font-size: 15px;
+      }
+
+      .pumps {
+        bottom: 25px;
+        gap: 9px;
+      }
+
+      .pump {
+        width: 75px;
+        height: 140px;
+      }
+
+      .pump-screen {
+        left: 10px;
+        right: 10px;
+        height: 40px;
+      }
+
+      .pump-circle {
+        left: 22px;
+        bottom: 12px;
+        width: 35px;
+        height: 35px;
+      }
+
+      .price-grid,
+      .service-grid,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 17px;
+      }
+
+      .about-box {
+        padding: 25px;
+      }
+
+      .about-visual h3 {
+        font-size: 47px;
+      }
+
+      .contact-box h2 {
+        font-size: 29px;
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="nav">
+
+      <a href="#home" class="logo">
+        <div class="logo-box">A</div>
+        ARVAN OIL
+      </a>
+
+      <button class="menu" onclick="toggleMenu()">☰</button>
+
+      <nav id="nav">
+
+        <a href="#home" onclick="closeMenu()">سەرەتا</a>
+
+        <a href="#prices" onclick="closeMenu()">نرخەکان</a>
+
+        <a href="#about" onclick="closeMenu()">دەربارەمان</a>
+
+        <a href="#services" onclick="closeMenu()">خزمەتگوزاری</a>
+
+        <a href="#location" onclick="closeMenu()">شوێنمان</a>
+
+        <a href="#contact" onclick="closeMenu()">پەیوەندی</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div>
+
+        <div class="welcome">
+          ⛽ بەخێربێیت بۆ بەنزینخانەی ئارڤان
+        </div>
+
+        <h1>
+          ARVAN<br>
+          OIL
+        </h1>
+
+        <h2>
+          بەنزینخانەی ئارڤان
+        </h2>
+
+        <p>
+          سووتەمەنیی کوالێتی و خزمەتگوزارییەکی
+          خێرا و باش بۆ کڕیارەکانمان.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#prices" class="btn primary">
+            ⛽ نرخەکانی سووتەمەنی
+          </a>
+
+          <a href="#location" class="btn secondary">
+            📍 شوێنی ئێمە
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-card">
+
+        <div class="circle-one"></div>
+        <div class="circle-two"></div>
+
+        <div class="hero-logo">
+
+          <h3>ARVAN OIL</h3>
+
+          <p>
+            بەنزینخانەی ئارڤان
+          </p>
+
+        </div>
+
+
+        <div class="pumps">
+
+          <div class="pump">
+            <div class="pump-screen"></div>
+            <div class="pump-circle"></div>
+          </div>
+
+          <div class="pump">
+            <div class="pump-screen"></div>
+            <div class="pump-circle"></div>
+          </div>
+
+          <div class="pump">
+            <div class="pump-screen"></div>
+            <div class="pump-circle"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= PRICES ================= -->
+
+  <section class="prices" id="prices">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <small>FUEL PRICES</small>
+
+        <h2>
+          نرخەکانی سووتەمەنی
+        </h2>
+
+        <p>
+          نرخەکانی سووتەمەنی لە بەنزینخانەی ئارڤان
+        </p>
+
+      </div>
+
+
+      <div class="price-grid">
+
+        <div class="price-card">
+
+          <div class="fuel-icon">⛽</div>
+
+          <h3>حکومی</h3>
+
+          <div class="price">750</div>
+
+          <div class="currency">
+            دینار
+          </div>
+
+        </div>
+
+
+        <div class="price-card">
+
+          <div class="fuel-icon">⛽</div>
+
+          <h3>گازکار</h3>
+
+          <div class="price">1100</div>
+
+          <div class="currency">
+            دینار
+          </div>
+
+        </div>
+
+
+        <div class="price-card">
+
+          <div class="fuel-icon">🛢️</div>
+
+          <h3>گازوایڵ</h3>
+
+          <div class="price">1050</div>
+
+          <div class="currency">
+            دینار
+          </div>
+
+        </div>
+
+
+        <div class="price-card">
+
+          <div class="fuel-icon">🔥</div>
+
+          <h3>غاز</h3>
+
+          <div class="price">600</div>
+
+          <div class="currency">
+            دینار
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= ABOUT ================= -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <small>ABOUT ARVAN OIL</small>
+
+        <h2>
+          دەربارەی ئارڤان
+        </h2>
+
+      </div>
+
+
+      <div class="about-grid">
+
+        <div class="about-box">
+
+          <h3>
+            بەنزینخانەی ئارڤان
+          </h3>
+
+          <p>
+            ئامانجی ئێمە دابینکردنی سووتەمەنیی کوالێتی
+            و خزمەتگوزارییەکی خێرا و باشە بۆ کڕیارەکانمان.
+          </p>
+
+
+          <div class="features">
+
+            <div class="feature">
+              <span>✓</span>
+              کوالێتی
+            </div>
+
+            <div class="feature">
+              <span>✓</span>
+              خزمەتگوزاریی خێرا
+            </div>
+
+            <div class="feature">
+              <span>✓</span>
+              نرخە ڕوونەکان
+            </div>
+
+            <div class="feature">
+              <span>✓</span>
+              مامەڵەی باش
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-visual">
+
+          <div>
+
+            <h3>
+              ARVAN
+            </h3>
+
+            <p>
+              OIL • بەنزینخانەی ئارڤان
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SERVICES ================= -->
+
+  <section class="services" id="services">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <small>OUR SERVICES</small>
+
+        <h2>
+          خزمەتگوزارییەکانمان
+        </h2>
+
+        <p>
+          خزمەتگوزارییەکانی بەنزینخانەی ئارڤان
+        </p>
+
+      </div>
+
+
+      <div class="service-grid">
+
+        <div class="service">
+
+          <div class="service-icon">⛽</div>
+
+          <h3>
+            بەنزین
+          </h3>
+
+          <p>
+            دابینکردنی بەنزینی کوالێتی بۆ ئۆتۆمبێلەکان.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">🛢️</div>
+
+          <h3>
+            گازوایڵ
+          </h3>
+
+          <p>
+            گازوایڵ بۆ ئۆتۆمبێل و ئۆتۆمبێلە بازرگانییەکان.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">🔥</div>
+
+          <h3>
+            غاز
+          </h3>
+
+          <p>
+            دابینکردنی غاز بە شێوەیەکی خێرا.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">🚗</div>
+
+          <h3>
+            خزمەتگوزاری ئۆتۆمبێل
+          </h3>
+
+          <p>
+            خزمەتگوزارییە پەیوەندیدارەکانی ئۆتۆمبێل.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= LOCATION ================= -->
+
+  <section class="location" id="location">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <small>LOCATION</small>
+
+        <h2>
+          شوێنی بەنزینخانەکەمان
+        </h2>
+
+      </div>
+
+
+      <div class="location-grid">
+
+
+        <div class="location-info">
+
+          <h3>
+            Arvan Oil
+          </h3>
+
+
+          <div class="location-row">
+
+            <span>📍</span>
+
+            <div>
+
+              <strong>
+                شوێن
+              </strong>
+
+              <p>
+                Red Erbil, Kalak
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="location-row">
+
+            <span>⛽</span>
+
+            <div>
+
+              <strong>
+                خزمەتگوزاری
+              </strong>
+
+              <p>
+                بەنزین • گازوایڵ • غاز
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <br>
+
+
+          <!-- دواتر لینکی ڕاستەقینەی Google Maps دابنێ -->
+
+          <a
+            href="https://www.google.com/maps"
+            target="_blank"
+            class="btn primary"
+          >
+            📍 Google Maps
+          </a>
+
+        </div>
+
+
+        <div class="map">
+
+          <div>
+
+            <div class="map-icon">
+              📍
+            </div>
+
+            <h3>
+              Red Erbil, Kalak
+            </h3>
+
+            <p>
+              شوێنی بەنزینخانەی ئارڤان
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CONTACT ================= -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2>
+          پەیوەندیمان پێوە بکە
+        </h2>
+
+        <p>
+          بۆ زانیاری زیاتر پەیوەندیمان پێوە بکە.
+        </p>
+
+
+        <div class="contact-buttons">
+
+          <!-- ژمارەی ڕاستەقینەکەت دواتر دابنێ -->
+
+          <a href="tel:+9640000000000">
+            📞 پەیوەندی
+          </a>
+
+
+          <a
+            href="https://wa.me/9640000000000"
+            target="_blank"
+          >
+            💬 WhatsApp
+          </a>
+
+
+          <a href="#" target="_blank">
+            Instagram
+          </a>
+
+
+          <a href="#" target="_blank">
+            Facebook
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="footer">
+
+      <strong>
+        ARVAN OIL
+      </strong>
+
+      <p>
+        © 2026 Arvan Oil — هەموو مافەکان پارێزراون.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    function toggleMenu() {
+
+      document
+        .getElementById("nav")
+        .classList
+        .toggle("active");
+
+    }
+
+
+    function closeMenu() {
+
+      document
+        .getElementById("nav")
+        .classList
+        .remove("active");
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
