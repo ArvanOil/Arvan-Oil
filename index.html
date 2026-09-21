@@ -10,7 +10,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     * {
@@ -41,7 +45,8 @@
       margin: auto;
     }
 
-    /* Header */
+    /* HEADER */
+
     header {
       position: sticky;
       top: 0;
@@ -62,7 +67,7 @@
     .brand {
       font-size: 21px;
       font-weight: 900;
-      color: #ffffff;
+      color: white;
     }
 
     .brand span {
@@ -75,15 +80,21 @@
       font-weight: 700;
     }
 
-    /* Hero */
+    /* HERO */
+
     .hero {
       min-height: 88vh;
       display: flex;
       align-items: center;
       text-align: center;
       background:
-        radial-gradient(circle at top, rgba(0,145,255,0.20), transparent 40%),
+        radial-gradient(
+          circle at top,
+          rgba(0,145,255,0.20),
+          transparent 40%
+        ),
         linear-gradient(180deg, #071a30, #06111f);
+
       padding: 50px 0;
     }
 
@@ -98,7 +109,10 @@
       border-radius: 30px;
       overflow: hidden;
       background: white;
-      box-shadow: 0 20px 60px rgba(0, 149, 255, 0.25);
+
+      box-shadow:
+        0 20px 60px rgba(0,149,255,0.25);
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -168,7 +182,8 @@
       color: white;
     }
 
-    /* Sections */
+    /* SECTIONS */
+
     section {
       padding: 75px 0;
     }
@@ -191,51 +206,183 @@
       font-size: 14px;
     }
 
-    /* Fuel */
+    /* FUEL */
+
+    .fuel-section {
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(21,151,255,0.08),
+          transparent 50%
+        );
+    }
+
     .fuel-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      gap: 18px;
     }
 
     .fuel-card {
-      background: linear-gradient(145deg, #0d2036, #091727);
-      border: 1px solid rgba(75, 145, 205, 0.18);
-      border-radius: 20px;
-      padding: 25px 15px;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(17,43,70,0.98),
+          rgba(7,21,36,0.98)
+        );
+
+      border: 1px solid rgba(73,160,230,0.20);
+      border-radius: 24px;
+
+      padding: 27px 18px;
       text-align: center;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      transition: 0.25s;
     }
 
-    .fuel-icon {
-      font-size: 30px;
-      margin-bottom: 8px;
+    .fuel-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(21,151,255,0.55);
+
+      box-shadow:
+        0 18px 45px rgba(0,125,255,0.14);
+    }
+
+    .fuel-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 130px;
+      height: 130px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(21,151,255,0.08);
+
+      top: -65px;
+      right: -65px;
+    }
+
+    .fuel-icon-box {
+      width: 62px;
+      height: 62px;
+
+      margin: 0 auto 14px;
+
+      border-radius: 18px;
+
+      background:
+        rgba(8,124,255,0.13);
+
+      border:
+        1px solid rgba(21,151,255,0.25);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 31px;
     }
 
     .fuel-name {
-      font-size: 17px;
-      font-weight: 800;
-      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 9px;
+    }
+
+    .fuel-description {
+      color: #8196aa;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .price-box {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 6px;
+
+      padding: 8px 16px;
+
+      border-radius: 13px;
+
+      background:
+        rgba(21,151,255,0.09);
+
+      border:
+        1px solid rgba(21,151,255,0.18);
     }
 
     .price {
-      font-size: 27px;
+      font-size: 29px;
       font-weight: 900;
-      color: #22a7ff;
+      color: #35adff;
+      direction: ltr;
     }
 
-    .price small {
+    .price-unit {
+      color: #a9bfd3;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 8px 14px;
+
+      border-radius: 12px;
+
       font-size: 13px;
-      color: #9eb1c5;
-    }
-
-    .unavailable {
-      color: #ff7676;
-      font-size: 20px;
       font-weight: 800;
     }
 
-    /* Contact */
+    .status-available {
+      background:
+        rgba(24,184,90,0.12);
+
+      border:
+        1px solid rgba(24,184,90,0.25);
+
+      color: #4ee58a;
+    }
+
+    .status-unavailable {
+      background:
+        rgba(255,82,82,0.10);
+
+      border:
+        1px solid rgba(255,82,82,0.22);
+
+      color: #ff7777;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: currentColor;
+
+      display: inline-block;
+    }
+
+    /* CONTACT */
+
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -244,10 +391,24 @@
 
     .contact-card {
       background: #0a1a2c;
-      border: 1px solid rgba(255,255,255,0.07);
+
+      border:
+        1px solid rgba(255,255,255,0.07);
+
       border-radius: 18px;
+
       padding: 20px;
+
       text-align: center;
+
+      transition: 0.2s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(21,151,255,0.3);
     }
 
     .contact-card .icon {
@@ -266,13 +427,23 @@
       direction: ltr;
     }
 
-    /* Location */
+    /* LOCATION */
+
     .location-box {
       background:
-        linear-gradient(145deg, rgba(15,45,75,0.95), rgba(6,20,35,0.98));
-      border: 1px solid rgba(21,151,255,0.2);
+        linear-gradient(
+          145deg,
+          rgba(15,45,75,0.95),
+          rgba(6,20,35,0.98)
+        );
+
+      border:
+        1px solid rgba(21,151,255,0.2);
+
       border-radius: 25px;
+
       padding: 35px 20px;
+
       text-align: center;
     }
 
@@ -293,19 +464,36 @@
 
     .map-button {
       display: inline-block;
+
       padding: 14px 25px;
+
       background: #087cff;
       color: white;
+
       border-radius: 13px;
+
       font-weight: 900;
-      box-shadow: 0 10px 30px rgba(8,124,255,0.25);
+
+      box-shadow:
+        0 10px 30px rgba(8,124,255,0.25);
+
+      transition: 0.2s;
     }
 
-    /* Footer */
+    .map-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+
     footer {
       background: #030b14;
-      border-top: 1px solid rgba(255,255,255,0.06);
+
+      border-top:
+        1px solid rgba(255,255,255,0.06);
+
       padding: 30px 0;
+
       text-align: center;
     }
 
@@ -330,7 +518,8 @@
       direction: ltr;
     }
 
-    /* Mobile */
+    /* MOBILE */
+
     @media (max-width: 600px) {
 
       .nav {
@@ -378,15 +567,36 @@
       }
 
       .fuel-card {
-        padding: 20px 8px;
+        padding: 21px 8px;
+        border-radius: 19px;
+      }
+
+      .fuel-icon-box {
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
+        border-radius: 15px;
       }
 
       .fuel-name {
         font-size: 14px;
       }
 
+      .fuel-description {
+        font-size: 10px;
+      }
+
       .price {
         font-size: 23px;
+      }
+
+      .price-unit {
+        font-size: 10px;
+      }
+
+      .status {
+        font-size: 10px;
+        padding: 7px 9px;
       }
 
       .contact-card {
@@ -415,9 +625,12 @@
 
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
+
   <header>
+
     <div class="container nav">
+
       <div class="brand">
         <span>Arvan</span> Oil
       </div>
@@ -425,16 +638,25 @@
       <a href="#fuel">
         نرخەکانی سووتەمەنی
       </a>
+
     </div>
+
   </header>
 
 
-  <!-- Hero -->
+  <!-- HERO -->
+
   <section class="hero">
+
     <div class="container hero-content">
 
       <div class="logo-box">
-        <img src="IMG_3258.jpeg" alt="Arvan Oil Logo">
+
+        <img
+          src="IMG_3258.jpeg"
+          alt="Arvan Oil Logo"
+        >
+
       </div>
 
       <h1>
@@ -451,147 +673,344 @@
 
       <div class="buttons">
 
-        <a class="btn btn-blue" href="tel:07504373756">
+        <a
+          class="btn btn-blue"
+          href="tel:07504373756"
+        >
           📞 پەیوەندی
         </a>
 
-        <a class="btn btn-green"
-           href="https://wa.me/9647504373756"
-           target="_blank">
+        <a
+          class="btn btn-green"
+          href="https://wa.me/9647504373756"
+          target="_blank"
+        >
           💬 WhatsApp
         </a>
 
-        <a class="btn btn-dark"
-           href="https://www.tiktok.com/@arvanoil"
-           target="_blank">
+        <a
+          class="btn btn-dark"
+          href="https://www.tiktok.com/@arvanoil"
+          target="_blank"
+        >
           🎵 TikTok
         </a>
 
       </div>
 
     </div>
+
   </section>
 
 
-  <!-- Fuel Prices -->
-  <section id="fuel">
+  <!-- FUEL -->
+
+  <section
+    id="fuel"
+    class="fuel-section"
+  >
+
     <div class="container">
 
       <h2 class="section-title">
-        نرخ و جۆری <span>سووتەمەنی</span>
+        نرخەکانی <span>سووتەمەنی</span>
       </h2>
 
       <p class="section-subtitle">
-        ئەو جۆرانەی لە وێستگەی ئارڤان بەردەستن
+        جۆری سووتەمەنی و نرخی هەر یەکێک لە وێستگەی ئارڤان
       </p>
+
 
       <div class="fuel-grid">
 
+
+        <!-- PETROL -->
+
         <div class="fuel-card">
-          <div class="fuel-icon">⛽</div>
+
+          <div class="fuel-icon-box">
+            ⛽
+          </div>
+
           <div class="fuel-name">
             بەنزینی حکومی
           </div>
-          <div class="unavailable">
-            بەردەست نیە
+
+          <div class="fuel-description">
+            بەنزینی حکومی
           </div>
+
+          <div class="price-box">
+
+            <div class="price">
+              750
+            </div>
+
+            <div class="price-unit">
+              دینار
+            </div>
+
+          </div>
+
+          <br>
+          <br>
+
+          <div class="status status-unavailable">
+
+            <span class="status-dot"></span>
+
+            بەردەست نیە
+
+          </div>
+
         </div>
 
-        <div class="fuel-card">
-          <div class="fuel-icon">🔥</div>
-          <div class="fuel-name">
-            غاز
-          </div>
-          <div class="unavailable">
-            بەردەست نیە
-          </div>
-        </div>
+
+        <!-- GAS CAR -->
 
         <div class="fuel-card">
-          <div class="fuel-icon">🚗</div>
+
+          <div class="fuel-icon-box">
+            🚗
+          </div>
+
           <div class="fuel-name">
             گازی کار
           </div>
-          <div class="price">
-            1300
-            <small>دینار</small>
+
+          <div class="fuel-description">
+            بۆ ئۆتۆمبێل
           </div>
+
+          <div class="price-box">
+
+            <div class="price">
+              1300
+            </div>
+
+            <div class="price-unit">
+              دینار
+            </div>
+
+          </div>
+
+          <br>
+          <br>
+
+          <div class="status status-available">
+
+            <span class="status-dot"></span>
+
+            بەردەستە
+
+          </div>
+
         </div>
 
+
+        <!-- DIESEL -->
+
         <div class="fuel-card">
-          <div class="fuel-icon">🛢️</div>
+
+          <div class="fuel-icon-box">
+            🛢️
+          </div>
+
           <div class="fuel-name">
             گازوایڵ
           </div>
-          <div class="price">
-            1100
-            <small>دینار</small>
+
+          <div class="fuel-description">
+            سووتەمەنی دیزڵ
           </div>
+
+          <div class="price-box">
+
+            <div class="price">
+              1100
+            </div>
+
+            <div class="price-unit">
+              دینار
+            </div>
+
+          </div>
+
+          <br>
+          <br>
+
+          <div class="status status-available">
+
+            <span class="status-dot"></span>
+
+            بەردەستە
+
+          </div>
+
         </div>
+
+
+        <!-- GAS -->
+
+        <div class="fuel-card">
+
+          <div class="fuel-icon-box">
+            🔥
+          </div>
+
+          <div class="fuel-name">
+            غاز
+          </div>
+
+          <div class="fuel-description">
+            غازی ئۆتۆمبێل
+          </div>
+
+          <div class="status status-unavailable">
+
+            <span class="status-dot"></span>
+
+            بەردەست نیە
+
+          </div>
+
+        </div>
+
 
       </div>
 
     </div>
+
   </section>
 
 
-  <!-- Contact -->
+  <!-- CONTACT -->
+
   <section>
+
     <div class="container">
 
       <h2 class="section-title">
-        <span>پەیوەندی</span لەگەڵ ئێمە>
+        <span>پەیوەندی</span> لەگەڵ ئێمە
       </h2>
 
       <p class="section-subtitle">
         بۆ زانیاری زیاتر پەیوەندیمان پێوە بکە
       </p>
 
+
       <div class="contact-grid">
 
-        <a class="contact-card" href="tel:07504373756">
-          <div class="icon">📞</div>
-          <h3>ژمارەی پەیوەندی</h3>
-          <p>07504373756</p>
+
+        <!-- PHONE -->
+
+        <a
+          class="contact-card"
+          href="tel:07504373756"
+        >
+
+          <div class="icon">
+            📞
+          </div>
+
+          <h3>
+            ژمارەی پەیوەندی
+          </h3>
+
+          <p>
+            07504373756
+          </p>
+
         </a>
 
-        <a class="contact-card"
-           href="https://wa.me/9647504373756"
-           target="_blank">
-          <div class="icon">💬</div>
-          <h3>WhatsApp</h3>
-          <p>07504373756</p>
+
+        <!-- WHATSAPP -->
+
+        <a
+          class="contact-card"
+          href="https://wa.me/9647504373756"
+          target="_blank"
+        >
+
+          <div class="icon">
+            💬
+          </div>
+
+          <h3>
+            WhatsApp
+          </h3>
+
+          <p>
+            0750437373756
+          </p>
+
         </a>
 
-        <a class="contact-card"
-           href="https://www.tiktok.com/@arvanoil"
-           target="_blank">
-          <div class="icon">🎵</div>
-          <h3>TikTok</h3>
-          <p>@arvanoil</p>
+
+        <!-- TIKTOK -->
+
+        <a
+          class="contact-card"
+          href="https://www.tiktok.com/@arvanoil"
+          target="_blank"
+        >
+
+          <div class="icon">
+            🎵
+          </div>
+
+          <h3>
+            TikTok
+          </h3>
+
+          <p>
+            @arvanoil
+          </p>
+
         </a>
 
-        <a class="contact-card"
-           href="https://maps.app.goo.gl/8D3N7vV7P8vHXgun6?g_st=ic"
-           target="_blank">
-          <div class="icon">📍</div>
-          <h3>شوێن</h3>
-          <p>Red Erbil, Kalak</p>
+
+        <!-- GOOGLE MAPS -->
+
+        <a
+          class="contact-card"
+          href="https://maps.app.goo.gl/NhCAgJrQL7cyhhbB6?g_st=ic"
+          target="_blank"
+        >
+
+          <div class="icon">
+            📍
+          </div>
+
+          <h3>
+            شوێن
+          </h3>
+
+          <p>
+            Red Erbil, Kalak
+          </p>
+
         </a>
+
 
       </div>
 
     </div>
+
   </section>
 
 
-  <!-- Google Maps -->
+  <!-- LOCATION -->
+
   <section>
+
     <div class="container">
 
       <div class="location-box">
 
-        <div class="location-icon">📍</div>
+        <div class="location-icon">
+          📍
+        </div>
 
         <h3>
           شوێنی وێستگەی ئارڤان
@@ -601,19 +1020,23 @@
           Red Erbil, Kalak
         </p>
 
-        <a class="map-button"
-           href="https://maps.app.goo.gl/8D3N7vV7P8vHXgun6?g_st=ic"
-           target="_blank">
+        <a
+          class="map-button"
+          href="https://maps.app.goo.gl/NhCAgJrQL7cyhhbB6?g_st=ic"
+          target="_blank"
+        >
           📍 کردنەوەی شوێن لە Google Maps
         </a>
 
       </div>
 
     </div>
+
   </section>
 
 
-  <!-- Footer -->
+  <!-- FOOTER -->
+
   <footer>
 
     <div class="container">
