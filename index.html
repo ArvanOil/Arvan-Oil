@@ -2,17 +2,22 @@
 <html lang="ku" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"="width=device-width, initial-scale=1.0">
-  <title>وێستگەی ئارڤان | Arvan Oil</title>
+
+  <!-- گرنگە بۆ قەبارەی دروستی سایت لە iPhone -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="tsTFd1GU8TQtj5NzS2zR_2zlwg3DbyElcfszm94j6lw">
+
   <meta name="description" content="وێستگەی ئارڤان - Arvan Oil - Red Erbil, Kalak">
+
+  <title>وێستگەی ئارڤان | Arvan Oil</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -21,164 +26,140 @@
 
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      font-family: "Noto Sans Arabic", sans-serif;
-      background: #06111f;
+      font-family: "Noto Sans Arabic", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(16, 91, 153, 0.28), transparent 38%),
+        linear-gradient(180deg, #061a33 0%, #031020 100%);
       color: white;
+      min-height: 100vh;
       line-height: 1.8;
+      overflow-x: hidden;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     .container {
-      width: 92%;
-      max-width: 1100px;
-      margin: auto;
+      width: min(1100px, calc(100% - 28px));
+      margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(4,13,25,.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(3, 16, 32, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav {
-      min-height: 70px;
+      min-height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
     }
 
     .brand {
-      font-size: 21px;
-      font-weight: 900;
-      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
     }
 
     .brand span {
       color: #1597ff;
     }
 
-    .nav a {
-      color: #dbeafe;
-      font-size: 14px;
-      font-weight: 700;
+    .nav-link {
+      color: #c9d6e5;
+      font-size: 13px;
     }
 
     .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
+      padding: 58px 0 75px;
       text-align: center;
-
-      background:
-        radial-gradient(circle at top,rgba(0,145,255,.20),transparent 40%),
-        linear-gradient(180deg,#071a30,#06111f);
-
-      padding: 50px 0;
     }
 
-    .hero-content {
-      width: 100%;
-    }
-
-    .logo-box {
-      width: 240px;
-      height: 240px;
-      margin: 0 auto 25px;
+    .logo {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
       border-radius: 30px;
-      overflow: hidden;
-      background: white;
-
-      box-shadow: 0 20px 60px rgba(0,149,255,.25);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
+      margin: 0 auto 22px;
+      box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
-    .logo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .hero h1 {
-      font-size: clamp(30px,7vw,58px);
-      font-weight: 900;
+    h1 {
+      font-size: clamp(34px, 8vw, 62px);
+      line-height: 1.25;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
-    .hero h1 span {
+    h1 span {
       color: #1597ff;
     }
 
-    .hero p {
-      color: #b8c8da;
+    .english-name {
+      color: #9eacbd;
       font-size: 16px;
-      margin-bottom: 25px;
+      margin-bottom: 12px;
+      direction: ltr;
     }
 
-    .location-small {
-      color: #7ecbff;
-      font-size: 14px;
-      margin-bottom: 25px;
+    .location {
+      color: #a9c8e8;
+      font-size: 15px;
+      margin-bottom: 24px;
     }
 
-    .buttons {
+    .actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .btn {
-      padding: 13px 21px;
-      border-radius: 14px;
-      font-weight: 800;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 110px;
+      padding: 11px 17px;
+      border-radius: 12px;
+      font-weight: 700;
       font-size: 14px;
-      transition: .2s;
-      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .phone {
+      background: #147df5;
     }
 
-    .btn-blue {
-      background: #087cff;
-      color: #fff;
+    .whatsapp {
+      background: #16b957;
     }
 
-    .btn-green {
-      background: #18b85a;
-      color: #fff;
-    }
-
-    .btn-dark {
-      background: #101f33;
-      border: 1px solid #29415c;
-      color: #fff;
+    .tiktok {
+      background: #101722;
     }
 
     section {
-      padding: 75px 0;
+      padding: 65px 0;
     }
 
     .section-title {
       text-align: center;
-      font-size: 30px;
-      font-weight: 900;
-      margin-bottom: 10px;
+      font-size: clamp(27px, 6vw, 42px);
+      font-weight: 800;
+      margin-bottom: 8px;
     }
 
     .section-title span {
@@ -187,467 +168,266 @@
 
     .section-subtitle {
       text-align: center;
-      color: #94a8bc;
-      margin-bottom: 35px;
+      color: #8e9bad;
+      margin-bottom: 28px;
       font-size: 14px;
-    }
-
-    .fuel-section {
-      background:
-        radial-gradient(circle at center,rgba(21,151,255,.08),transparent 50%);
     }
 
     .fuel-grid {
       display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 18px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
     }
 
     .fuel-card {
-      position: relative;
-      overflow: hidden;
-
-      background:
-        linear-gradient(145deg,rgba(17,43,70,.98),rgba(7,21,36,.98));
-
-      border: 1px solid rgba(73,160,230,.20);
-      border-radius: 24px;
-      padding: 27px 18px;
+      background: linear-gradient(
+        180deg,
+        rgba(14, 48, 82, 0.82),
+        rgba(7, 28, 51, 0.82)
+      );
+      border: 1px solid rgba(65, 151, 220, 0.18);
+      border-radius: 20px;
+      padding: 23px 16px;
       text-align: center;
-
-      box-shadow:
-        0 15px 40px rgba(0,0,0,.22),
-        inset 0 1px 0 rgba(255,255,255,.04);
-
-      transition: .25s;
-    }
-
-    .fuel-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(21,151,255,.55);
-      box-shadow: 0 18px 45px rgba(0,125,255,.14);
-    }
-
-    .fuel-card::before {
-      content: "";
-      position: absolute;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: rgba(21,151,255,.08);
-      top: -65px;
-      right: -65px;
-    }
-
-    .fuel-icon-box {
-      width: 62px;
-      height: 62px;
-      margin: 0 auto 14px;
-
-      border-radius: 18px;
-      background: rgba(8,124,255,.13);
-      border: 1px solid rgba(21,151,255,.25);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 31px;
     }
 
     .fuel-name {
       font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 9px;
-    }
-
-    .fuel-description {
-      color: #8196aa;
-      font-size: 12px;
-      margin-bottom: 15px;
-    }
-
-    .price-box {
-      display: inline-flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 6px;
-
-      padding: 8px 16px;
-      border-radius: 13px;
-
-      background: rgba(21,151,255,.09);
-      border: 1px solid rgba(21,151,255,.18);
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .price {
-      font-size: 29px;
-      font-weight: 900;
-      color: #35adff;
-      direction: ltr;
+      font-size: 28px;
+      font-weight: 800;
+      color: #1597ff;
     }
 
-    .price-unit {
-      color: #a9bfd3;
+    .price small {
+      font-size: 13px;
+      color: #aab7c7;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
       font-size: 12px;
       font-weight: 700;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      padding: 8px 14px;
-      border-radius: 12px;
-
-      font-size: 13px;
-      font-weight: 800;
+    .available {
+      color: #79e5a2;
+      background: rgba(28, 180, 91, 0.12);
     }
 
-    .status-available {
-      background: rgba(24,184,90,.12);
-      border: 1px solid rgba(24,184,90,.25);
-      color: #4ee58a;
-    }
-
-    .status-unavailable {
-      background: rgba(255,82,82,.10);
-      border: 1px solid rgba(255,82,82,.22);
-      color: #ff7777;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: currentColor;
-      display: inline-block;
+    .unavailable {
+      color: #ff8d8d;
+      background: rgba(220, 55, 55, 0.12);
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(2,1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 15px;
     }
 
     .contact-card {
-      background: #0a1a2c;
-      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(10, 34, 59, 0.8);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
-      padding: 20px;
+      padding: 22px 15px;
       text-align: center;
-      transition: .2s;
     }
 
-    .contact-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(21,151,255,.3);
+    .contact-icon {
+      font-size: 27px;
+      margin-bottom: 7px;
     }
 
-    .contact-card .icon {
-      font-size: 28px;
-      margin-bottom: 8px;
+    .contact-title {
+      font-weight: 700;
+      margin-bottom: 4px;
     }
 
-    .contact-card h3 {
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-
-    .contact-card p {
-      color: #aebfd0;
-      font-size: 14px;
+    .contact-text {
+      color: #a7b4c4;
+      font-size: 13px;
       direction: ltr;
+      overflow-wrap: anywhere;
     }
 
-    /* LOCATION */
-
-    .location-box {
-      background:
-        linear-gradient(145deg,rgba(15,45,75,.95),rgba(6,20,35,.98));
-
-      border: 1px solid rgba(21,151,255,.2);
-      border-radius: 25px;
-
-      padding: 35px 20px;
-      text-align: center;
-    }
-
-    .location-icon {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
-
-    .location-box h3 {
-      font-size: 23px;
-      margin-bottom: 8px;
-    }
-
-    .location-box p {
-      color: #aebfd0;
-      margin-bottom: 18px;
+    .map-box {
+      background: rgba(8, 31, 53, 0.82);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 12px;
+      overflow: hidden;
     }
 
     .map-container {
       width: 100%;
-      margin: 25px 0;
-
-      border-radius: 18px;
+      height: 390px;
+      border-radius: 16px;
       overflow: hidden;
-
-      border: 1px solid rgba(21,151,255,.25);
-
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
 
     .map-container iframe {
-      display: block;
       width: 100%;
-      height: 350px;
+      height: 100%;
       border: 0;
+      display: block;
+    }
+
+    .map-button-wrap {
+      text-align: center;
+      padding: 18px 0 4px;
     }
 
     .map-button {
-      display: inline-block;
-
-      padding: 14px 25px;
-
-      background: #087cff;
-      color: #fff;
-
-      border-radius: 13px;
-
-      font-weight: 900;
-
-      box-shadow: 0 10px 30px rgba(8,124,255,.25);
-
-      transition: .2s;
-    }
-
-    .map-button:hover {
-      transform: translateY(-2px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #147df5;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
     }
 
     footer {
-      background: #030b14;
-
-      border-top: 1px solid rgba(255,255,255,.06);
-
-      padding: 30px 0;
-
       text-align: center;
-    }
-
-    footer .footer-brand {
-      font-size: 22px;
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-
-    footer .footer-brand span {
-      color: #1597ff;
-    }
-
-    footer p {
-      color: #71859a;
+      color: #718095;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 28px 15px 35px;
       font-size: 13px;
     }
 
-    .designer {
-      margin-top: 8px;
-      color: #9db2c7;
-      direction: ltr;
+    footer strong {
+      color: #1597ff;
     }
 
-    @media(max-width:600px) {
-
-      .nav {
-        min-height: 62px;
+    @media (max-width: 850px) {
+      .fuel-grid,
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
+    }
 
-      .brand {
-        font-size: 18px;
-      }
+    @media (max-width: 560px) {
 
-      .nav a {
-        font-size: 12px;
+      .container {
+        width: calc(100% - 20px);
       }
 
       .hero {
-        min-height: 82vh;
-        padding: 40px 0;
+        padding-top: 42px;
       }
 
-      .logo-box {
-        width: 210px;
-        height: 210px;
-      }
-
-      .hero h1 {
-        font-size: 31px;
-      }
-
-      .hero p {
-        font-size: 14px;
-      }
-
-      section {
-        padding: 55px 0;
-      }
-
-      .section-title {
-        font-size: 26px;
+      .logo {
+        width: 155px;
+        height: 155px;
       }
 
       .fuel-grid,
       .contact-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
       }
 
       .fuel-card {
-        padding: 21px 8px;
-        border-radius: 19px;
-      }
-
-      .fuel-icon-box {
-        width: 52px;
-        height: 52px;
-        font-size: 26px;
-        border-radius: 15px;
+        padding: 18px 9px;
       }
 
       .fuel-name {
-        font-size: 14px;
-      }
-
-      .fuel-description {
-        font-size: 10px;
+        font-size: 15px;
       }
 
       .price {
         font-size: 23px;
       }
 
-      .price-unit {
-        font-size: 10px;
+      .map-container {
+        height: 330px;
       }
-
-      .status {
-        font-size: 10px;
-        padding: 7px 9px;
-      }
-
-      .contact-card {
-        padding: 17px 8px;
-      }
-
-      .contact-card h3 {
-        font-size: 14px;
-      }
-
-      .contact-card p {
-        font-size: 12px;
-      }
-
-      .buttons {
-        gap: 8px;
-      }
-
-      .btn {
-        padding: 11px 15px;
-        font-size: 13px;
-      }
-
-      .map-container iframe {
-        height: 300px;
-      }
-
     }
-
   </style>
 </head>
 
 <body>
 
-  <header>
-
-    <div class="container nav">
-
-      <div class="brand">
-        <span>Arvan</span> Oil
-      </div>
-
-      <a href="#fuel">
-        نرخەکانی سووتەمەنی
-      </a>
-
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <span>Arvan</span> Oil
     </div>
 
-  </header>
+    <a class="nav-link" href="#location">
+      شوێن
+    </a>
+  </div>
+</header>
 
+<main>
 
   <!-- HERO -->
-
   <section class="hero">
+    <div class="container">
 
-    <div class="container hero-content">
-
-      <div class="logo-box">
-
-        <img
-          src="IMG_3258.jpeg"
-          alt="Arvan Oil Logo">
-
-      </div>
+      <img
+        class="logo"
+        src="IMG_3258.jpeg"
+        alt="Arvan Oil Logo"
+      >
 
       <h1>
         وێستگەی <span>ئارڤان</span>
       </h1>
 
-      <p>
+      <div class="english-name">
         Arvan Oil
-      </p>
-
-      <div class="location-small">
-         Red Erbil, Kalak 📍
-        
-        ڕیگای هـەولـێر-خـەبات مـەفـرەق جـدیدە
       </div>
 
-      <div class="buttons">
+      <div class="location">
+        📍 Red Erbil, Kalak
+      </div>
+
+      <div class="actions">
 
         <a
-          class="btn btn-blue"
-          href="tel:07504373756">
+          class="button phone"
+          href="tel:07504373756"
+        >
           📞 پەیوەندی
         </a>
 
         <a
-          class="btn btn-green"
+          class="button whatsapp"
           href="https://wa.me/9647504373756"
-          target="_blank">
-          💬 WhatsApp
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp 💬
         </a>
 
         <a
-          class="btn btn-dark"
+          class="button tiktok"
           href="https://www.tiktok.com/@arvanoil"
-          target="_blank">
-          🎵 TikTok
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          TikTok 🎵
         </a>
 
       </div>
 
     </div>
-
   </section>
 
 
   <!-- FUEL -->
-
-  <section id="fuel" class="fuel-section">
+  <section>
 
     <div class="container">
 
@@ -659,151 +439,66 @@
         جۆری سووتەمەنی و نرخی هەر یەکێک لە وێستگەی ئارڤان
       </p>
 
-
       <div class="fuel-grid">
 
-
         <div class="fuel-card">
-
-          <div class="fuel-icon-box">
-            ⛽
-          </div>
-
           <div class="fuel-name">
             بەنزینی حکومی
           </div>
 
-          <div class="fuel-description">
-            بەنزینی حکومی
+          <div class="price">
+            750 <small>دینار</small>
           </div>
 
-          <div class="price-box">
-
-            <div class="price">
-              750
-            </div>
-
-            <div class="price-unit">
-              دینار
-            </div>
-
-          </div>
-
-          <br><br>
-
-          <div class="status status-unavailable">
-
-            <span class="status-dot"></span>
-
+          <div class="status unavailable">
             بەردەست نیە
-
           </div>
-
         </div>
 
 
         <div class="fuel-card">
-
-          <div class="fuel-icon-box">
-            🚗
-          </div>
-
           <div class="fuel-name">
             گازی کار
           </div>
 
-          <div class="fuel-description">
-            بۆ ئۆتۆمبێل
+          <div class="price">
+            1300 <small>دینار</small>
           </div>
 
-          <div class="price-box">
-
-            <div class="price">
-              1300
-            </div>
-
-            <div class="price-unit">
-              دینار
-            </div>
-
-          </div>
-
-          <br><br>
-
-          <div class="status status-available">
-
-            <span class="status-dot"></span>
-
+          <div class="status available">
             بەردەستە
-
           </div>
-
         </div>
 
 
         <div class="fuel-card">
-
-          <div class="fuel-icon-box">
-            🛢️
-          </div>
-
           <div class="fuel-name">
             گازوایڵ
           </div>
 
-          <div class="fuel-description">
-            سووتەمەنی دیزڵ
+          <div class="price">
+            1100 <small>دینار</small>
           </div>
 
-          <div class="price-box">
-
-            <div class="price">
-              1100
-            </div>
-
-            <div class="price-unit">
-              دینار
-            </div>
-
-          </div>
-
-          <br><br>
-
-          <div class="status status-available">
-
-            <span class="status-dot"></span>
-
+          <div class="status available">
             بەردەستە
-
           </div>
-
         </div>
 
 
         <div class="fuel-card">
-
-          <div class="fuel-icon-box">
-            🔥
-          </div>
-
           <div class="fuel-name">
             غاز
           </div>
 
-          <div class="fuel-description">
-            غازی ئۆتۆمبێل
+          <div class="price">
+            —
           </div>
 
-          <div class="status status-unavailable">
-
-            <span class="status-dot"></span>
-
+          <div class="status unavailable">
             بەردەست نیە
-
           </div>
-
         </div>
-
 
       </div>
 
@@ -813,105 +508,70 @@
 
 
   <!-- CONTACT -->
-
   <section>
 
     <div class="container">
 
       <h2 class="section-title">
-        <span>پەیوەندی</span> لەگەڵ ئێمە
+        پەیوەندی
       </h2>
 
       <p class="section-subtitle">
         بۆ زانیاری زیاتر پەیوەندیمان پێوە بکە
       </p>
 
-
       <div class="contact-grid">
-
 
         <a
           class="contact-card"
-          href="tel:07504373756">
-
-          <div class="icon">
-            📞
-          </div>
-
-          <h3>
-            ژمارەی پەیوەندی
-          </h3>
-
-          <p>
+          href="tel:07504373756"
+        >
+          <div class="contact-icon">📞</div>
+          <div class="contact-title">تەلەفۆن</div>
+          <div class="contact-text">
             07504373756
-          </p>
-
+          </div>
         </a>
 
 
         <a
           class="contact-card"
           href="https://wa.me/9647504373756"
-          target="_blank">
-
-          <div class="icon">
-            💬
-          </div>
-
-          <h3>
-            WhatsApp
-          </h3>
-
-          <p>
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="contact-icon">💬</div>
+          <div class="contact-title">WhatsApp</div>
+          <div class="contact-text">
             07504373756
-          </p>
-
+          </div>
         </a>
 
 
         <a
           class="contact-card"
           href="https://www.tiktok.com/@arvanoil"
-          target="_blank">
-
-          <div class="icon">
-            🎵
-          </div>
-
-          <h3>
-            TikTok
-          </h3>
-
-          <p>
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="contact-icon">🎵</div>
+          <div class="contact-title">TikTok</div>
+          <div class="contact-text">
             @arvanoil
-          </p>
-
+          </div>
         </a>
 
 
         <a
-  class="map-button"
-  href="https://www.google.com/maps/search/?api=1&query=ARVAN%20OIL%2C%20Kalak%2C%20Erbil%20Governorate"
-  target="_blank">
-
-  📍 کردنەوەی شوێن لە Google Maps
-
-</a>
-
-          <div class="icon">
-            📍
-          </div>
-
-          <h3>
-            شوێن
-          </h3>
-
-          <p>
+          class="contact-card"
+          href="#location"
+        >
+          <div class="contact-icon">📍</div>
+          <div class="contact-title">شوێن</div>
+          <div class="contact-text">
             Red Erbil, Kalak
-          </p>
-
+          </div>
         </a>
-
 
       </div>
 
@@ -920,56 +580,46 @@
   </section>
 
 
-  <!-- GOOGLE MAP -->
-
-  <section>
+  <!-- GOOGLE MAPS -->
+  <section id="location">
 
     <div class="container">
 
-      <div class="location-box">
+      <h2 class="section-title">
+        شوێنی <span>وێستگە</span>
+      </h2>
 
-        <div class="location-icon">
-          📍
-        </div>
+      <p class="section-subtitle">
+        Arvan Oil — Kalak, Erbil Governorate
+      </p>
 
-        <h3>
-          شوێنی وێستگەی ئارڤان
-        </h3>
-
-        <p>
-          ARVAN OIL - Kalak, Erbil Governorate
-        </p>
-
+      <div class="map-box">
 
         <div class="map-container">
 
           <iframe
             src="https://www.google.com/maps?q=ARVAN%20OIL%2C%20Kalak%2C%20Erbil%20Governorate&output=embed"
-            width="100%"
-            height="350"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy">
-          </iframe>
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Arvan Oil Location"
+          ></iframe>
 
         </div>
-<a
-  class="map-button"
-  href="https://www.google.com/maps/search/?api=1&query=ARVAN%20OIL%2C%20Kalak%2C%20Erbil%20Governorate"
-  target="_blank">
 
-  📍 کردنەوەی شوێن لە Google Maps
 
-</a>
+        <div class="map-button-wrap">
 
-  
+          <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=ARVAN%20OIL%2C%20Kalak%2C%20Erbil%20Governorate"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📍 کردنەوەی شوێن لە Google Maps
+          </a>
 
-</a>
-        
-
-          📍 کردنەوەی شوێن لە Google Maps
-
-        </a>
+        </div>
 
       </div>
 
@@ -977,33 +627,12 @@
 
   </section>
 
+</main>
 
-  <!-- FOOTER -->
 
-  <footer>
-
-    <div class="container">
-
-      <div class="footer-brand">
-        <span>Arvan</span> Oil
-      </div>
-
-      <p>
-        وێستگەی ئارڤان
-      </p>
-
-      <p>
-        ENERGY FOR A BETTER TOMORROW
-      </p>
-
-      <p class="designer">
-        Design By : Shexany98
-      </p>
-
-    </div>
-
-  </footer>
-
+<footer>
+  Design By : <strong>Shexany98</strong>
+</footer>
 
 </body>
 </html>
