@@ -15,7 +15,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(5,17,34,.9);border-botto
 section{padding:42px 0}.section-heading{text-align:center;margin-bottom:24px}.section-heading h2{font-size:clamp(25px,4vw,34px);font-weight:900}.section-heading h2 span{color:#3998ff}.section-heading p{color:var(--muted);margin-top:7px}.price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.price-card{min-height:158px;padding:20px 16px;border-radius:22px;background:linear-gradient(145deg,#ffffff17,#ffffff09);border:1px solid var(--line);text-align:center;box-shadow:0 12px 30px #0002;display:flex;flex-direction:column;justify-content:center;align-items:center}.price-icon{font-size:29px;margin-bottom:7px}.price-card h3{font-size:17px;margin-bottom:7px}.price{color:#65e7ff;font-size:27px;font-weight:900}.unavailable{color:#ffb4bd;font-weight:800;line-height:1.7}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.contact-card{padding:24px 18px;text-align:center;border-radius:22px;background:#ffffff0b;border:1px solid var(--line)}.symbol{font-size:31px;margin-bottom:8px}.contact-card h3{font-size:19px;margin-bottom:7px}.contact-card p,.contact-card a{color:var(--muted);font-size:17px}.contact-card a:hover{color:var(--cyan)}.map-card{margin-top:16px;padding:22px;border-radius:22px;border:1px solid var(--line);background:#ffffff0b;text-align:center}.map-card h3{font-size:22px;margin-bottom:5px}.map-card p{color:var(--muted);margin-bottom:14px}.map-frame{width:100%;height:300px;border:0;border-radius:16px;margin-top:16px;background:#122b45}footer{text-align:center;color:#aebed2;padding:26px 0 32px;border-top:1px solid #ffffff14;margin-top:16px}footer strong{color:white}.designer{color:#64dfff;font-weight:800;margin-top:7px}
 @media(max-width:850px){.nav-links{display:none}.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-grid{grid-template-columns:1fr}.profile-row{margin-top:-70px}}
 @media(max-width:520px){nav{min-height:62px}.brand{font-size:17px}.brand img{width:38px;height:38px}.nav-cta{padding:9px 12px;font-size:13px}.profile-content{padding:0 5px 8px}.profile-row{gap:13px;margin-top:-57px;align-items:end}.avatar-ring{width:116px;height:116px;flex-basis:116px;padding:5px}.avatar-ring img{border-width:3px}.profile-title{padding-bottom:4px}.profile-title h1{font-size:25px}.profile-title p{font-size:14px;margin-top:2px}.location-line{font-size:12px}.profile-bio{font-size:14px;margin:15px 0}.actions{display:grid;grid-template-columns:1fr 1fr}.btn{padding:10px 9px;font-size:14px;min-height:46px}.btn-tiktok{grid-column:span 2}section{padding:30px 0}.price-grid{gap:10px}.price-card{min-height:137px;padding:15px 9px;border-radius:17px}.price-card h3{font-size:14px}.price{font-size:23px}.unavailable{font-size:12px}.map-frame{height:235px}}
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+</style><script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 OneSignalDeferred.push(async function(OneSignal) {
@@ -23,12 +23,6 @@ OneSignalDeferred.push(async function(OneSignal) {
     appId: "8173a3ca-ed91-4041-b99f-576360c6fec4",
     serviceWorkerPath: "/Arvan-Oil/OneSignalSDKWorker.js",
     serviceWorkerParam: { scope: "/Arvan-Oil/" }
-  });
-});
-  <script>
-document.getElementById("enableNotifications").addEventListener("click", function() {
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.Notifications.requestPermission();
   });
 });
 </script>
@@ -41,4 +35,11 @@ document.getElementById("enableNotifications").addEventListener("click", functio
 <section id="prices"><div class="container"><div class="section-heading"><h2>نرخی <span>سووتەمەنی</span></h2><p>دۆخی بەردەستبوونی بەرهەمەکان لە وێستگەی ئارڤان</p></div><div class="price-grid"><article class="price-card"><div class="price-icon">⛽</div><h3>بەنزینی حکومی</h3><div class="unavailable">750 — بەردەست نیە</div></article><article class="price-card"><div class="price-icon">🔥</div><h3>غاز</h3><div class="unavailable">بەردەست نیە</div></article><article class="price-card"><div class="price-icon">🛢️</div><h3>گازی کار</h3><div class="price">1300 دینار</div></article><article class="price-card"><div class="price-icon">🚚</div><h3>گازوایڵ</h3><div class="price">1100 دینار</div></article></div></div></section>
 <section id="contact"><div class="container"><div class="section-heading"><h2>پەیوەندی و <span>شوێن</span></h2><p>بۆ زانیاری زیاتر پەیوەندیمان پێوە بکە</p></div><div class="contact-grid"><div class="contact-card"><div class="symbol">📞</div><h3>تەلەفۆن</h3><p><a href="tel:07504373756">07504373756</a></p></div><div class="contact-card"><div class="symbol">💬</div><h3>WhatsApp</h3><p><a href="https://wa.me/9647504373756" target="_blank" rel="noopener">07504373756</a></p></div><div class="contact-card"><div class="symbol">♪</div><h3>TikTok</h3><p><a href="https://www.tiktok.com/@arvanoil" target="_blank" rel="noopener">@arvanoil</a></p></div></div><div class="map-card"><h3>📍 Red Erbil, Kalak</h3><p>وێستگەی ئارڤان — Arvan Oil</p><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=ARVAN%20OIL%2C%20Kalak%2C%20Erbil%20Governorate" target="_blank" rel="noopener">کردنەوە لە Google Maps</a><iframe class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=ARVAN%20OIL%2C%20Kalak%2C%20Erbil%20Governorate&output=embed" title="شوێنی وێستگەی ئارڤان"></iframe></div></div></section></main>
 <footer><div class="container"><strong>وێستگەی ئارڤان | Arvan Oil</strong><div class="designer">Design By : Shexany98</div></div></footer>
-</body></html>
+<script>document.getElementById("enableNotifications").addEventListener("click", function() {
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.Notifications.requestPermission();
+  });
+});
+</script>
+</body>
+</html>
