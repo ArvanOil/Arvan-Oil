@@ -25,6 +25,12 @@ OneSignalDeferred.push(async function(OneSignal) {
     serviceWorkerParam: { scope: "/Arvan-Oil/" }
   });
 });
+  <script>
+document.getElementById("enableNotifications").addEventListener("click", function() {
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.Notifications.requestPermission();
+  });
+});
 </script>
 <body>
   <button id="enableNotifications" type="button">
