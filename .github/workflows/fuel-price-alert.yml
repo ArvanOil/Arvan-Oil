@@ -1,0 +1,37 @@
+name: Arvan Oil Fuel Price Alerts
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check price changes
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Send OneSignal notification
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: |
+          if git diff HEAD^ HEAD -- index.html | grep -qE '^[+-].*(750|1300|1100|گاز|گازوایڵ|MAZOT|MAZOT)'; then
+            curl -X POST https://api.onesignal.com/notifications \
+              -H "Authorization: Key $ONESIGNAL_REST_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "app_id": "8173a3ca-ed91-4041-b99f-576360c6fec4",
+                "included_segments": ["All"],
+                "headings": {"en": "🔔 ARVAN OIL"},
+                "contents": {"en": "Fuel prices have been updated. Tap to see the latest prices."},
+                "url": "https://arvanoil.github.io/Arvan-Oil/"
+              }'
+          else
+            echo "No fuel price change detected."
+          fi
