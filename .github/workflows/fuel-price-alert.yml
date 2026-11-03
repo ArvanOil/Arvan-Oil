@@ -6,13 +6,47 @@ on:
       - main
     paths:
       - "index.html"
-  workflow_dispatch:
 
 jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check fuel price changes
+        id: compare
+        run: |
+          PRICE_CHANGED=$(python - <<'PY'
+          import subprocess
+          import re
+
+          def get_prices(revision):
+              html = subprocess.check_output(
+                  ["git", "show", f"{revision}:index.html"],
+                  text=True
+              )
+              match = re.search(
+                  r'<div class="price-grid">.*?</div></div></section>',
+                  html,
+                  re.S
+              )
+              if not match:
+                  raise SystemExit("Could not find fuel price section")
+              return match.group(0)
+
+          old_prices = get_prices("HEAD^")
+          new_prices = get_prices("HEAD")
+
+          print("yes" if old_prices != new_prices else "no")
+          PY
+          )
+          echo "changed=$PRICE_CHANGED" >> "$GITHUB_OUTPUT"
+
       - name: Send OneSignal notification
+        if: steps.compare.outputs.changed == 'yes'
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
         run: |
@@ -31,3 +65,7 @@ jobs:
               },
               "url": "https://arvanoil.github.io/Arvan-Oil/"
             }'
+
+      - name: No price changes
+        if: steps.compare.outputs.changed == 'no'
+        run: echo "No fuel price changes. No notification sent."
