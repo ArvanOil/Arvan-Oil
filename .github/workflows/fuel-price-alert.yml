@@ -61,7 +61,7 @@ jobs:
                 "en": "🔔 ARVAN OIL"
               },
               "contents": {
-                "en": "Fuel prices have been updated. Tap to see the latest prices."
+                "en": نرخی سووتەمەنی لە وێستگەی ئارڤان نوێکرایەوە. بۆ بینینی نرخە نوێیەکان کرتە 
               },
               "url": "https://arvanoil.github.io/Arvan-Oil/"
             }'
