@@ -1,3 +1,4 @@
+
 name: Arvan Oil Fuel Price Alerts
 
 on:
@@ -10,23 +11,26 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
-      - name: Detect fuel changes and notify
+      - name: Detect fuel price changes and notify
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
         run: |
           python3 - <<'PY'
           import re
+          import os
           import json
           import html
           import subprocess
-          import os
           import urllib.request
+
+          APP_ID = "8173a3ca-ed91-4041-b99f-576360c6fec4"
 
           def get_prices(revision):
               source = subprocess.check_output(
@@ -45,14 +49,14 @@ jobs:
               for card in cards:
                   name = re.search(r'<h3>(.*?)</h3>', card, re.S)
                   value = re.search(
-                      r'<div class="(price|unavailable)">(.*?)</div>',
+                      r'<div class="(?:price|unavailable)">(.*?)</div>',
                       card,
                       re.S
                   )
 
                   if name and value:
                       product = re.sub(r'<.*?>', '', name.group(1))
-                      status = re.sub(r'<.*?>', '', value.group(2))
+                      status = re.sub(r'<.*?>', '', value.group(1))
 
                       product = html.unescape(product).strip()
                       status = html.unescape(status).strip()
@@ -71,7 +75,8 @@ jobs:
 
               if old_value is not None and old_value != new_value:
                   changes.append(
-                      f"{product}: {old_value} ← {new_value}"
+                      f"نرخی {product} گۆڕا\n"
+                      f"{old_value} ← {new_value}"
                   )
 
           if not changes:
@@ -79,16 +84,15 @@ jobs:
               raise SystemExit(0)
 
           message = (
-              "نرخی سووتەمەنی گۆڕا!\n\n"
-              + "\n".join(changes)
-              + "\n\nنرخی نوێ لە وێبسایتی وێستگەی ئارڤان ببینە."
+              "نرخی سوتەمەنی گۆڕا!\n\n"
+              + "\n\n".join(changes)
           )
 
           payload = {
-              "app_id": "8173a3ca-ed91-4041-b99f-576360c6fec4",
+              "app_id": APP_ID,
               "included_segments": ["All"],
               "headings": {
-                  "en": "🔔 وێستگەی ئارڤان"
+                  "en": "وێستگەی ئارڤان"
               },
               "contents": {
                   "en": message
@@ -98,7 +102,10 @@ jobs:
 
           request = urllib.request.Request(
               "https://api.onesignal.com/notifications",
-              data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+              data=json.dumps(
+                  payload,
+                  ensure_ascii=False
+              ).encode("utf-8"),
               headers={
                   "Authorization": "Key " + os.environ["ONESIGNAL_REST_API_KEY"],
                   "Content-Type": "application/json"
