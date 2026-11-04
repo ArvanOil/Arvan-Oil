@@ -8,6 +8,9 @@ on:
     paths:
       - "index.html"
 
+permissions:
+  contents: read
+
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -18,13 +21,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Detect fuel price changes and notify
+      - name: Compare fuel prices and notify
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
         run: |
           python3 - <<'PY'
-          import re
           import os
+          import re
           import json
           import html
           import subprocess
@@ -44,55 +49,59 @@ jobs:
                   re.S
               )
 
-              result = {}
+              prices = {}
 
               for card in cards:
                   name = re.search(r'<h3>(.*?)</h3>', card, re.S)
                   value = re.search(
-                      r'<div class="(?:price|unavailable)">(.*?)</div>',
+                      r'<div class="price">(.*?)</div>',
                       card,
                       re.S
                   )
 
                   if name and value:
                       product = re.sub(r'<.*?>', '', name.group(1))
-                      status = re.sub(r'<.*?>', '', value.group(1))
+                      price = re.sub(r'<.*?>', '', value.group(1))
 
                       product = html.unescape(product).strip()
-                      status = html.unescape(status).strip()
+                      price = html.unescape(price).strip()
 
-                      result[product] = status
+                      prices[product] = price
 
-              return result
+              return prices
 
-          old = get_prices("HEAD^")
-          new = get_prices("HEAD")
+          before = os.environ["BEFORE_SHA"]
+          current = os.environ["CURRENT_SHA"]
+
+          if not before or set(before) == {"0"}:
+              print("No previous version to compare.")
+              raise SystemExit(0)
+
+          old_prices = get_prices(before)
+          new_prices = get_prices(current)
 
           changes = []
 
-          for product, new_value in new.items():
-              old_value = old.get(product)
+          for product, new_price in new_prices.items():
+              old_price = old_prices.get(product)
 
-              if old_value is not None and old_value != new_value:
+              if old_price and old_price != new_price:
                   changes.append(
-                      f"نرخی {product} گۆڕا\n"
-                      f"{old_value} ← {new_value}"
+                      f"نرخی {product} گۆڕا:\n"
+                      f"{old_price} ← {new_price}"
                   )
 
           if not changes:
-              print("No fuel price changes.")
+              print("No fuel price changes. No notification sent.")
               raise SystemExit(0)
 
-          message = (
-              "نرخی سوتەمەنی گۆڕا!\n\n"
-              + "\n\n".join(changes)
-          )
+          message = "\n\n".join(changes)
 
           payload = {
               "app_id": APP_ID,
               "included_segments": ["All"],
               "headings": {
-                  "en": "وێستگەی ئارڤان"
+                  "en": "🔔 وێستگەی ئارڤان"
               },
               "contents": {
                   "en": message
@@ -116,4 +125,5 @@ jobs:
           with urllib.request.urlopen(request) as response:
               print(response.read().decode("utf-8"))
 
+          print("Fuel price notification sent.")
           PY
