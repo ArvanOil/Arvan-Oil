@@ -16,56 +16,97 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Check fuel price changes
-        id: compare
-        run: |
-          PRICE_CHANGED=$(python - <<'PY'
-          import subprocess
-          import re
-
-          def get_prices(revision):
-              html = subprocess.check_output(
-                  ["git", "show", f"{revision}:index.html"],
-                  text=True
-              )
-              match = re.search(
-                  r'<div class="price-grid">.*?</div></div></section>',
-                  html,
-                  re.S
-              )
-              if not match:
-                  raise SystemExit("Could not find fuel price section")
-              return match.group(0)
-
-          old_prices = get_prices("HEAD^")
-          new_prices = get_prices("HEAD")
-
-          print("yes" if old_prices != new_prices else "no")
-          PY
-          )
-          echo "changed=$PRICE_CHANGED" >> "$GITHUB_OUTPUT"
-
-      - name: Send OneSignal notification
-        if: steps.compare.outputs.changed == 'yes'
+      - name: Detect fuel changes and notify
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
         run: |
-          curl --fail-with-body --show-error --silent \
-            -X POST "https://api.onesignal.com/notifications" \
-            -H "Authorization: Key $ONESIGNAL_REST_API_KEY" \
-            -H "Content-Type: application/json" \
-            -d '{
+          python3 - <<'PY'
+          import re
+          import json
+          import html
+          import subprocess
+          import os
+          import urllib.request
+
+          def get_prices(revision):
+              source = subprocess.check_output(
+                  ["git", "show", f"{revision}:index.html"],
+                  text=True
+              )
+
+              cards = re.findall(
+                  r'<article class="price-card">(.*?)</article>',
+                  source,
+                  re.S
+              )
+
+              result = {}
+
+              for card in cards:
+                  name = re.search(r'<h3>(.*?)</h3>', card, re.S)
+                  value = re.search(
+                      r'<div class="(price|unavailable)">(.*?)</div>',
+                      card,
+                      re.S
+                  )
+
+                  if name and value:
+                      product = re.sub(r'<.*?>', '', name.group(1))
+                      status = re.sub(r'<.*?>', '', value.group(2))
+
+                      product = html.unescape(product).strip()
+                      status = html.unescape(status).strip()
+
+                      result[product] = status
+
+              return result
+
+          old = get_prices("HEAD^")
+          new = get_prices("HEAD")
+
+          changes = []
+
+          for product, new_value in new.items():
+              old_value = old.get(product)
+
+              if old_value is not None and old_value != new_value:
+                  changes.append(
+                      f"{product}: {old_value} ← {new_value}"
+                  )
+
+          if not changes:
+              print("No fuel price changes.")
+              raise SystemExit(0)
+
+          message = (
+              "نرخی سووتەمەنی گۆڕا!\n\n"
+              + "\n".join(changes)
+              + "\n\nنرخی نوێ لە وێبسایتی وێستگەی ئارڤان ببینە."
+          )
+
+          payload = {
               "app_id": "8173a3ca-ed91-4041-b99f-576360c6fec4",
               "included_segments": ["All"],
               "headings": {
-                "en": "🔔 وێستگەی ئارڤان"
+                  "en": "🔔 وێستگەی ئارڤان"
               },
               "contents": {
-                "en": "نرخی سووتەمەنی لە وێستگەی ئارڤان نوێکرایەوە. بۆ بینینی نرخە نوێیەکان کرتە بکە."
+                  "en": message
               },
               "url": "https://arvanoil.github.io/Arvan-Oil/"
-            }'
+          }
 
-      - name: No price changes
-        if: steps.compare.outputs.changed == 'no'
-        run: echo "No fuel price changes. No notification sent."
+          request = urllib.request.Request(
+              "https://api.onesignal.com/notifications",
+              data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+              headers={
+                  "Authorization": "Key " + os.environ["ONESIGNAL_REST_API_KEY"],
+                  "Content-Type": "application/json"
+              },
+              method="POST"
+          )
+
+          with urllib.request.urlopen(request) as response:
+              print(response.read().decode("utf-8"))
+
+          PY
